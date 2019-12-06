@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Nav from './components/Nav';
 import List from './components/List';
 import Note from './components/Note';
 
 
-class App extends React.Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
       showNote: false
     };
+  }
+
+  toggleNote = () => {
+    this.setState({
+      showNote: ! this.state.showNote 
+    });
   }
   
   render() {
@@ -18,7 +24,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Nav />
+        <Nav toggle={this.toggleNote} show={showNote} />
         { showNote ? <Note /> : <List /> }
       </div>
     );
