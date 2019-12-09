@@ -27,6 +27,10 @@ class App extends Component {
     .then((res) => this.setState({ notes: res.data }) )
     .catch((err) => console.log(err.response.data));
   }
+
+  getNote = () => {
+    console.log('clicked');
+  }
   
   render() {
     const { showNote, notes } = this.state;
@@ -34,7 +38,7 @@ class App extends Component {
     return (
       <div className="App">
         <Nav toggle={this.toggleNote} show={showNote} />
-        { showNote ? <Note /> : <List getNotes={this.getNotes} notes={notes} /> }
+        { showNote ? <Note /> : <List getNotes={this.getNotes} notes={notes} getNote={this.getNote} /> }
       </div>
     );
   }
