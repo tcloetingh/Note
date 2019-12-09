@@ -16,7 +16,7 @@ class NoteCard extends React.Component {
           <i className="material-icons">close</i>
         </span>
         <span className="note-card-edit">
-          <i className="material-icons" onClick={() => getNote()}>mode_edit</i>
+          <i className="material-icons" onClick={() => getNote(note.id)}>mode_edit</i>
         </span>
       </div>
     );
