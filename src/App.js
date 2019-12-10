@@ -34,6 +34,13 @@ class App extends Component {
     .then((res) => this.setState({ note: res.data, showNote: true }))
     .catch((err) => console.log(err.response.data));
   }
+
+  submitNote = (data) => {
+    axios.post(urlFor('notes'), data)
+    .then((res) => this.setState({ showNote: false }))
+    .catch((err) => console.log(err.response.data));
+
+  }
   
   render() {
     const { showNote, notes, note } = this.state;
@@ -41,7 +48,7 @@ class App extends Component {
     return (
       <div className="App">
         <Nav toggle={this.toggleNote} show={showNote} />
-        { showNote ? <Note note={note} /> : <List getNotes={this.getNotes} notes={notes} getNote={this.getNote} /> }
+        { showNote ? <Note note={note} submitNote={this.submitNote} /> : <List getNotes={this.getNotes} notes={notes} getNote={this.getNote} /> }
       </div>
     );
   }
