@@ -3,7 +3,7 @@ import NoteCard from './NoteCard';
 
 class List extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getNotes();
   }
 
